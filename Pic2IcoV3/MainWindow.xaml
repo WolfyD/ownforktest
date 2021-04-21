@@ -1,0 +1,292 @@
+﻿<Window x:Name="MainForm" x:Class="Pic2IcoV3.MainWindow" 
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Pic2IcoV3" 
+		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+		mc:Ignorable="d" 
+		Title="Pic2Ico v3.0" 
+		Height="525" 
+		Width="698" 
+		WindowStartupLocation="CenterScreen" 
+		Background="#C3A3CC" 
+		WindowStyle="None" 
+		ResizeMode="NoResize">
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="25"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="255"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid x:Name="Header" Background="#946165" Grid.ColumnSpan="2" MouseDown="Header_MouseDown" MouseUp="Header_MouseUp" MouseMove="Header_MouseMove">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock x:Name="lbl_Title" Text="Pic2Ico v3.0" FontSize="16" Foreground="White" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Fonts/#Dosis" FontWeight="Medium" Grid.ColumnSpan="2"/>
+			<TextBlock x:Name="btn_Help" Text="About" Foreground="White" Grid.Column="13" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Fonts/#Dosis" Margin="3px" Cursor="Hand" MouseUp="btn_Help_MouseUp"/>
+			<TextBlock x:Name="btn_CloseShadow" Text="☒" Foreground="Black" Grid.Column="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="1.3px 1.3px 0 0" FontSize="24px" FontWeight="Medium" Visibility="Hidden" Cursor="Hand"/>
+			<TextBlock x:Name="btn_Close" Text="☒" Foreground="White" Grid.Column="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="2px" FontSize="24px" Cursor="Hand" MouseEnter="btn_Close_MouseEnter" MouseLeave="btn_Close_MouseLeave" PreviewMouseUp="btn_Close_PreviewMouseUp" ToolTip="Exit"/>
+		</Grid>
+
+		<StackPanel x:Name="LeftPanel" Grid.Row="1" Background="#C3A3CC">
+
+			<StackPanel Orientation="Horizontal">
+				<Image x:Name="DisplayImage" Width="50" Height="50" Margin="5 5 10 5" Source="Images/img.png"/>
+				<TextBlock Text="Pic 2 Ico" Foreground="White" FontSize="20" FontWeight="Medium" FontFamily="Fonts/#Dosis" VerticalAlignment="Center"/>
+			</StackPanel>
+
+			<Grid Margin="4,4,4,0" Height="435">
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="20px"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="35px"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" VerticalAlignment="Top" Text="Images to convert"/>
+
+				<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+					<ListView x:Name="lv_List" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#E5C5EE" SelectionMode="Extended" SelectionChanged="lv_List_SelectionChanged" DragEnter="lv_List_DragEnter" DragOver="lv_List_DragOver" Drop="lv_List_Drop" AllowDrop="True" DragLeave="lv_List_DragLeave">
+
+						<ListView.View>
+
+							<GridView>
+								<GridViewColumn Header="Name" Width="60" DisplayMemberBinding="{Binding Name}"/>
+								<GridViewColumn Header="Width" Width="60" DisplayMemberBinding="{Binding Width}"/>
+								<GridViewColumn Header="Height" Width="60" DisplayMemberBinding="{Binding Height}"/>
+								<GridViewColumn Header="Path" Width="240" DisplayMemberBinding="{Binding Path}"/>
+							</GridView>
+
+						</ListView.View>
+
+					</ListView>
+
+				</ScrollViewer>
+
+				<StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom">
+					<Button Margin="5px" Width="73" Height="25px" Name="btn_Add" Content="Add" Click="btn_Add_Click"/>
+					<Button Margin="5px" Width="73" Height="25px" Name="btn_Remove" Content="Remove" Click="btn_Remove_Click"/>
+					<Button Margin="5px" Width="73" Height="25px" Name="btn_Clear" Content="Clear" Click="btn_Clear_Click"/>
+				</StackPanel>
+
+			</Grid>
+
+		</StackPanel>
+
+		<StackPanel x:Name="RightPanel" Grid.Row="1" Grid.Column="1" Margin="0,4,4,4" Background="#C3A3CC" HorizontalAlignment="Right" Width="247">
+
+			<Grid>
+
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<StackPanel Grid.Row="0" Height="34px" Orientation="Horizontal" HorizontalAlignment="Right">
+					<ComboBox x:Name="cb_ColorTemplate" Width="100px" Height="24px" SelectionChanged="cb_ColorTemplate_SelectionChanged">
+						<ComboBoxItem Content="Purple" IsSelected="True" />
+						<ComboBoxItem Content="Blue" />
+						<ComboBoxItem Content="Orange" />
+						<ComboBoxItem Content="Cyan" />
+					</ComboBox>
+				</StackPanel>
+
+				<GroupBox x:Name="gb_Settings" Grid.Row="1" Header="Settings" VerticalAlignment="Top" Margin="0,41,0,-425" Grid.RowSpan="2" Height="384" HorizontalAlignment="Right" Width="247" BorderBrush="{x:Null}">
+
+					<Grid>
+
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+
+						<StackPanel Grid.Row="0" Grid.RowSpan="3" Orientation="Horizontal" HorizontalAlignment="Stretch">
+							<TextBlock Text="Color Depth: " Width="130px" HorizontalAlignment="Left" Margin="0 18px 0 0"/>
+
+							<ComboBox x:Name="cb_ColorDepth" Width="100px" Height="25" HorizontalAlignment="Right">
+								<ComboBoxItem x:Name="ci_32bit" Content="32 bit" IsSelected="True"/>
+								<ComboBoxItem x:Name="ci_24bit" Content="24 bit"/>
+								<ComboBoxItem x:Name="ci_16bit" Content="16 bit"/>
+								<ComboBoxItem x:Name="ci_8bit" Content="8 bit"/>
+								<ComboBoxItem x:Name="ci_4bit" Content="4 bit"/>
+							</ComboBox>
+
+						</StackPanel>
+
+						<StackPanel Grid.Row="3" Grid.RowSpan="4" Orientation="Horizontal" HorizontalAlignment="Stretch">
+
+							<TextBlock Text="Size: " Width="50px" HorizontalAlignment="Left" Margin="0 18px 0 0"/>
+
+							<Grid>
+
+								<StackPanel Margin="0 2px 0 0" Orientation="Horizontal">
+									<RadioButton x:Name="rb_OriginalSize" Margin="0 -34px 0 0" Height="15px" HorizontalAlignment="Right" IsChecked="True" Content="Original" Checked="rb_OriginalSize_Checked"/>
+									<RadioButton x:Name="rb_Scale" Margin="0 -34px 0 0" Height="15px" Width="120px" Content="Typical Scale" Checked="rb_Scale_Checked"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Margin="-30px 38px 0 0">
+
+									<Grid x:Name="grid_TypicalScale" Visibility="Hidden" IsEnabled="False">
+
+										<Grid.RowDefinitions>
+											<RowDefinition/>
+											<RowDefinition/>
+										</Grid.RowDefinitions>
+
+										<StackPanel Grid.Row="0" Orientation="Horizontal">
+											<CheckBox x:Name="cb_Size_24"	Width="50px" IsChecked="True" Content="24"/>
+											<CheckBox x:Name="cb_Size_32"	Width="50px" IsChecked="True" Content="32"/>
+											<CheckBox x:Name="cb_Size_64"	Width="50px" IsChecked="True" Content="64"/>
+											<CheckBox x:Name="cb_Size_128"	Width="50px" IsChecked="True" Content="128"/>
+										</StackPanel>
+
+										<StackPanel Grid.Row="1" Orientation="Horizontal">
+											<CheckBox x:Name="cb_Size_256"	Width="50px" IsChecked="True" Content="256"/>
+											<CheckBox x:Name="cb_Size_512"	Width="50px" IsChecked="True" Content="512"/>
+											<CheckBox x:Name="cb_Size_1024"	Width="50px" IsChecked="True" Content="1024"/>
+											<CheckBox x:Name="cb_Size_2048" Width="50px" IsChecked="True" Content="2048"/>
+										</StackPanel>
+
+									</Grid>
+
+								</StackPanel>
+
+							</Grid>
+
+						</StackPanel>
+
+						<StackPanel Grid.Row="9" Grid.RowSpan="6">
+
+							<Grid>
+
+								<Grid.RowDefinitions>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+								</Grid.RowDefinitions>
+
+								<StackPanel Grid.Row="0" Orientation="Horizontal">
+									<TextBlock Text="Replace color"/>
+									<CheckBox x:Name="cb_ReplaceColor" Margin="12px 0 0 0" Checked="cb_ReplaceColor_Checked" Unchecked="cb_ReplaceColor_Unchecked"/>
+								</StackPanel>
+
+								<StackPanel x:Name="sp_ReplaceColorPanel" Visibility="Hidden" Grid.Row="0" Height="30px" HorizontalAlignment="Right" Margin="0 0 10px 0" Orientation="Horizontal">
+
+									<Grid>
+										<Canvas x:Name="canvas_Color_ReplaceThisTransparency" Cursor="Hand" Width="30px" Height="30px" RenderTransformOrigin="0.5,0.5">
+											<Canvas.Background>
+												<ImageBrush ImageSource="Images/tp.png" Stretch="None" TileMode="FlipXY" Viewport="2,2,4,4" ViewportUnits="Absolute" ViewboxUnits="RelativeToBoundingBox" />
+											</Canvas.Background>
+										</Canvas>
+
+										<Border BorderBrush="Black" BorderThickness="1px">
+											<Canvas x:Name="canvas_Color_ReplaceThis" Cursor="Hand" Width="28px" Height="28px" Background="White"/>
+										</Border>
+									</Grid>
+
+									<TextBlock Text=" with " Margin="10px 5px 10px 0"/>
+
+									<Grid>
+										<Canvas x:Name="canvas_Color_ReplaceWithThisTransparency" Cursor="Hand" Width="28px" Height="28px" RenderTransformOrigin="0.5,0.5">
+											<Canvas.Background>
+												<ImageBrush ImageSource="Images/tp.png" Stretch="None" TileMode="FlipXY" Viewport="2,2,4,4" ViewportUnits="Absolute" ViewboxUnits="RelativeToBoundingBox" />
+											</Canvas.Background>
+										</Canvas>
+										<Border BorderBrush="Black" BorderThickness="1px">
+											<Canvas x:Name="canvas_Color_ReplaceWithThis" Cursor="Hand" Width="28px" Height="28px" Background="#0000" RenderTransformOrigin="0.5,0.5" />
+										</Border>
+									</Grid>
+
+								</StackPanel>
+
+								<xctk:ColorPicker x:Name="cp_ColorPicker" Width="200px" Margin="0 -62px 0 0" Height="30px" Visibility="Hidden" DisplayColorAndName="True" ColorMode="ColorCanvas" SelectedColor="White" />
+
+								<Grid x:Name="grid_ReplaceColorTolerance"  Visibility="Hidden"  Margin="0 10px 0 0" Grid.Row="2">
+									<Grid.RowDefinitions>
+										<RowDefinition/>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<TextBlock Text="Tolerance: "/>
+									<Slider x:Name="slider_ColorTolerance" HorizontalAlignment="Right" Width="150px" Minimum="0" Maximum="200" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider_ColorTolerance_ValueChanged"/>
+									<TextBlock x:Name="lbl_ColorTolerance" HorizontalAlignment="Right" Margin="0 0 10px 0" Grid.Row="1" Text="0px"/>
+								</Grid>
+
+							</Grid>
+
+						</StackPanel>
+
+						<StackPanel Grid.Row="14" Grid.RowSpan="3" Orientation="Horizontal">
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition />
+									<RowDefinition />
+								</Grid.RowDefinitions>
+
+								<StackPanel x:Name="sp_Output" Grid.Row="0" Orientation="Horizontal" Height="25px" >
+									<TextBlock Text="Output: " Margin="0 3px 0 0"/>
+									<TextBox x:Name="tb_OutputFolder" Width="155px" Height="25px" Margin="10px 0 0 0" Text="Select folder" VerticalContentAlignment="Center" TextChanged="tb_OutputFolder_TextChanged"/>
+
+									<Button x:Name="btn_SelectOutputFolder" Cursor="Hand" Width="25px" Height="25px" Click="btn_SelectOutputFolder_Click">
+										<Button.Content>
+											<Image Source="Images/folder.png" />
+										</Button.Content>
+									</Button>
+								</StackPanel>
+								<CheckBox x:Name="cb_UseOriginFolder" Grid.Row="1" Content="Use origin folder" HorizontalAlignment="Right" Unchecked="cb_UseOriginFolder_Unchecked" Checked="cb_UseOriginFolder_Checked" />
+							</Grid>
+						</StackPanel>
+
+					</Grid>
+
+				</GroupBox>
+
+				<StackPanel Grid.Row="2" Orientation="Horizontal" Height="30" Margin="0,0,0,-460" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="93">
+					<Button x:Name="btn_Convert" Content="Convert" Padding="4px" Margin="0 0 4px 4px" Click="btn_Convert_Click" Width="92"/>
+				</StackPanel>
+
+			</Grid>
+
+		</StackPanel>
+
+	</Grid>
+</Window>

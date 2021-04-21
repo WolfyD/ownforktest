@@ -1,0 +1,45 @@
+﻿<Window x:Class="Pic2IcoV3.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pic2IcoV3"
+        mc:Ignorable="d"
+		Background="LightGray"
+        Title="About" Height="235.622" 
+		Width="400" 
+		ResizeMode="NoResize" 
+		WindowStartupLocation="CenterOwner">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		
+		<StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal">
+			<StackPanel Orientation="Horizontal">
+				<Image x:Name="DisplayImage" Width="50" Height="50" Margin="5 5 10 5" Source="Images/img.png"/>
+				<TextBlock Text="Pic 2 Ico" Foreground="Gray" FontSize="20" FontWeight="Medium" FontFamily="Fonts/#Dosis" VerticalAlignment="Center"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Margin="20px 0 0 0" Grid.Row="2" Grid.RowSpan="7" Orientation="Vertical">
+			<TextBlock Text="Copyright © 2021 WolfPaw Studios" />
+			<TextBlock />
+			<TextBlock Text="IconEx library © 2013 Steve McMahon - vbaccelerator" Height="18" />
+			<TextBlock />
+			<TextBlock Text="Extended WPF Toolkit™ by Xceed " />
+			<TextBlock Text="Provided under the Xceed Software, Inc. Community License" />
+		</StackPanel>
+
+		<StackPanel Grid.Row="6" Grid.RowSpan="1" Orientation="Vertical" Height="26px" VerticalAlignment="Bottom">
+			<Button x:Name="btn_Close" Content="Close" Height="26px" Width="Auto" VerticalAlignment="Bottom" Click="btn_Close_Click" />
+		</StackPanel>
+
+	</Grid>
+</Window>
