@@ -43,6 +43,8 @@ namespace Pic2IcoV3
 			canvas_Color_ReplaceWithThis.MouseUp += Canvas_Color_ReplaceWithThis_MouseUp;
 			cp_ColorPicker.LostFocus += Cp_ColorPicker_LostFocus;
 			cp_ColorPicker.Closed += Cp_ColorPicker_Closed;
+			//There is some code here!
+			var testVar = 99999;
 		}
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
